@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TV Model Info</title>
+  <meta name="viewport" content="width=1920">
+  <style>
+    body { font-family: sans-serif; font-size: 32px; color: white; background: black; padding: 2em; }
+  </style>
+</head>
+<body>
+  <h1>TV Info</h1>
+  <div id="info">Loading...</div>
+
+  <script>
+    try {
+      var modelName = Hisense_GetModelName();
+      var brand = Hisense_GetBrand();
+      var deviceId = Hisense_GetDeviceID();
+      var firmware = Hisense_GetFirmWareVersion();
+      var ua = navigator.userAgent;
+
+      document.getElementById("info").innerText = `
+        Model Name: ${modelName}
+        Brand: ${brand}
+        Device ID: ${deviceId}
+        Firmware: ${firmware}
+        User Agent: ${ua}
+      `;
+    } catch (e) {
+      document.getElementById("info").innerText = "Failed to retrieve model info.";
+    }
+  </script>
+</body>
+</html>
